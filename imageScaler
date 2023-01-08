@@ -1,0 +1,49 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Custom Image resize command -> requires \usepackage{graphix, calc}
+
+\newlength{\textBoxHeight}
+\newlength{\imageHeight}
+
+\newcommand{\textAndImage}[2]{
+	
+	\settototalheight{\textBoxHeight}{\vbox{#1}}
+	#1
+	\setlength{\imageHeight}{\textheight-(\textBoxHeight+25pt)} 
+  
+  %The +25pt is a safety buffer, you can make it smaller and see at what point the first picture breaks
+	
+  \vfill
+	\begin{center}
+			\includegraphics[width=\linewidth,height=\imageHeight,keepaspectratio=true]{#2}
+	\end{center}
+	\vfill
+}
+
+%Usage: \textAndImage{Text above the image}{Path to image}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Custom Image resize command with captions -> requires \usepackage{graphix, calc}
+
+\newlength{\textBoxHeight}
+\newlength{\imageHeight}
+
+\newcommand{\textAndImage}[4]{
+	
+	\settototalheight{\textBoxHeight}{\vbox{#1}}
+	#1
+	\setlength{\imageHeight}{\textheight-(\textBoxHeight+75pt)} 
+  
+  %The +75pt is a safety buffer for captions, you can make this smaller if you dont use figures
+	
+  \vfill
+	\begin{center}
+		\begin{figure}[h!]
+			\includegraphics[width=\linewidth,height=\imageHeight,keepaspectratio=true]{#2}
+			\caption{#3}
+			\label{#4}
+		\end{figure}
+	\end{center}
+	\vfill
+}
+
+%Usage: \textAndImage{Text above the image}{Path to image}{Caption}{figure label e.g. fig:xx}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
