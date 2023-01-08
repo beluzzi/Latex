@@ -1,3 +1,3 @@
 # latex
 
-Some custom Latex code templates
+Some custom Latex code templates.
